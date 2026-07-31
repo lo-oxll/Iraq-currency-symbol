@@ -2,46 +2,59 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8" />
-<title>معاينة احترافية لعرض العملة</title>
+<title>الرمز = د.ع = IQD</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-  body{background:#f3f1ea;padding:32px 16px;}
-  .showcase{max-width:520px;margin:0 auto;}
-  .section-title{font-family:'Cairo',sans-serif;font-weight:800;font-size:15px;margin:34px 0 12px;color:#12141C;}
-  .row-example{
-    display:flex;align-items:center;justify-content:space-between;background:#fff;
-    border:1px solid #E4E1D8;border-radius:12px;padding:14px 16px;margin-bottom:10px;
-    font-family:'Cairo',sans-serif;
-  }
-  .row-example .label{color:#8A8578;font-size:13px;}
-  .row-example .value{font-weight:700;font-size:16px;}
-  .badges-strip{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:10px;}
-  .status{font-family:'Cairo',sans-serif;text-align:center;margin-top:24px;font-size:13px;color:#8A8578;}
+  body{background:#f3f1ea;padding:32px 16px;font-family:'Cairo',sans-serif;}
+  .showcase{max-width:460px;margin:0 auto;}
+  h2{text-align:center;font-size:16px;color:#12141C;margin-bottom:6px;}
+  .sub{text-align:center;color:#8A8578;font-size:13px;margin-bottom:30px;}
+
+  .group{background:#fff;border:1px solid #E4E1D8;border-radius:14px;padding:18px;margin-bottom:16px;}
+  .group .three{display:flex;align-items:center;justify-content:space-around;}
+  .form{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;}
+  .form .value{font-weight:800;font-size:20px;color:#12141C;}
+  .form .tag{font-size:11px;color:#8A8578;}
+  .eq{font-size:18px;color:#C8952E;font-weight:800;}
+
+  .status{text-align:center;margin-top:20px;font-size:13px;color:#8A8578;}
 </style>
 </head>
 <body>
 
 <div class="showcase">
-  <h2 style="font-family:'Cairo',sans-serif;text-align:center;">معاينة احترافية لعرض العملة بالمتجر</h2>
+  <h2>الرمز = د.ع = IQD</h2>
+  <p class="sub">نفس السعر، ثلاث طرق لكتابته</p>
 
-  <p class="section-title">أسعار داخل قوائم المنتجات (الاستخدام العادي)</p>
-  <div class="row-example"><span class="label">تيشيرت قطن مطبوع</span><span class="value">150 <span class="currency-fallback">د.ع</span><span class="currency-icon" aria-label="دينار">&#xE900;</span></span></div>
-  <div class="row-example"><span class="label">وشاح تخرج مطرّز</span><span class="value">5,000 <span class="currency-fallback">د.ع</span><span class="currency-icon" aria-label="دينار">&#xE900;</span></span></div>
-  <div class="row-example"><span class="label">سجاد Tufting بتصميم خاص</span><span class="value">25,000 <span class="currency-fallback">د.ع</span><span class="currency-icon" aria-label="دينار">&#xE900;</span></span></div>
-  <div class="row-example"><span class="label">طلبية بالجملة (50 قطعة)</span><span class="value">1,250,000 <span class="currency-fallback">د.ع</span><span class="currency-icon" aria-label="دينار">&#xE900;</span></span></div>
-
-  <p class="section-title">البادج الدائري (نفس شكل بطاقة المنتج بالمتجر)</p>
-  <div class="badges-strip">
-    <div class="seal">150 <span class="currency-fallback">د.ع</span><span class="currency-icon" aria-label="دينار">&#xE900;</span></div>
-    <div class="seal">5,000 <span class="currency-fallback">د.ع</span><span class="currency-icon" aria-label="دينار">&#xE900;</span></div>
-    <div class="seal">25,000 <span class="currency-fallback">د.ع</span><span class="currency-icon" aria-label="دينار">&#xE900;</span></div>
+  <div class="group">
+    <div class="three">
+      <div class="form"><span class="value">150 <span class="currency-fallback">د.ع</span><span class="currency-icon" aria-label="دينار">&#xE900;</span></span><span class="tag">الرمز</span></div>
+      <span class="eq">=</span>
+      <div class="form"><span class="value">150 د.ع</span><span class="tag">د.ع</span></div>
+      <span class="eq">=</span>
+      <div class="form"><span class="value">150 IQD</span><span class="tag">IQD</span></div>
+    </div>
   </div>
 
-  <p class="section-title">سطر الإجمالي (نافذة تأكيد الحجز)</p>
-  <div class="row-example" style="background:#12141C;border-color:#12141C;">
-    <span class="label" style="color:#B9B9B9;">الإجمالي</span>
-    <span class="value" style="color:#fff;">45,000 <span class="currency-fallback">د.ع</span><span class="currency-icon" aria-label="دينار">&#xE900;</span></span>
+  <div class="group">
+    <div class="three">
+      <div class="form"><span class="value">5,000 <span class="currency-fallback">د.ع</span><span class="currency-icon" aria-label="دينار">&#xE900;</span></span><span class="tag">الرمز</span></div>
+      <span class="eq">=</span>
+      <div class="form"><span class="value">5,000 د.ع</span><span class="tag">د.ع</span></div>
+      <span class="eq">=</span>
+      <div class="form"><span class="value">5,000 IQD</span><span class="tag">IQD</span></div>
+    </div>
+  </div>
+
+  <div class="group">
+    <div class="three">
+      <div class="form"><span class="value">25,000 <span class="currency-fallback">د.ع</span><span class="currency-icon" aria-label="دينار">&#xE900;</span></span><span class="tag">الرمز</span></div>
+      <span class="eq">=</span>
+      <div class="form"><span class="value">25,000 د.ع</span><span class="tag">د.ع</span></div>
+      <span class="eq">=</span>
+      <div class="form"><span class="value">25,000 IQD</span><span class="tag">IQD</span></div>
+    </div>
   </div>
 
   <p class="status" id="status">جارِ التحقق من تحميل الخط...</p>
@@ -54,7 +67,7 @@
       if (loaded && loaded.length > 0) {
         document.documentElement.classList.add("currency-font-ready");
         document.documentElement.classList.add("currency-show-text");
-        status.textContent = "✅ هذا هو المظهر الاحترافي الفعلي — د.ع لمدة 5 ثوانٍ ثم الرمز لثانية، ويتكرر";
+        status.textContent = "✅ عمود \"الرمز\" يتبدّل تلقائيًا بين الشكلين ليؤكد أنه نفس الشيء";
         (function cycle(){
           setTimeout(function () {
             document.documentElement.classList.remove("currency-show-text");
@@ -65,10 +78,10 @@
           }, 5000);
         })();
       } else {
-        status.textContent = "⚠️ لم يتم العثور على الخط — يظهر النص الاحتياطي د.ع";
+        status.textContent = "⚠️ لم يتم العثور على الخط";
       }
     }).catch(function () {
-      document.getElementById("status").textContent = "❌ فشل تحميل الخط — يظهر النص الاحتياطي د.ع";
+      document.getElementById("status").textContent = "❌ فشل تحميل الخط";
     });
   }
 </script>
