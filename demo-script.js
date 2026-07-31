@@ -3,18 +3,8 @@ if ("fonts" in document) {
     var status = document.getElementById("status");
     if (loaded && loaded.length > 0) {
       document.documentElement.classList.add("currency-font-ready");
-      document.documentElement.classList.add("currency-show-text"); // يبدأ بعرض النص
-      status.textContent = "✅ الخط انحمّل بنجاح — د.ع لمدة 5 ثوانٍ ثم الرمز لمدة ثانية، ويتكرر";
+      status.textContent = "✅ الخط انحمّل بنجاح — الرمز ثابت الآن، بدون أي تبديل";
       status.style.color = "green";
-      (function cycle(){
-        setTimeout(function () {
-          document.documentElement.classList.remove("currency-show-text");
-          setTimeout(function () {
-            document.documentElement.classList.add("currency-show-text");
-            cycle();
-          }, 1000);
-        }, 5000);
-      })();
     } else {
       status.textContent = "⚠️ لم يتم العثور على الخط — يظهر النص الاحتياطي د.ع";
       status.style.color = "orange";

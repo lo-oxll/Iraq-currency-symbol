@@ -66,17 +66,7 @@
       var status = document.getElementById("status");
       if (loaded && loaded.length > 0) {
         document.documentElement.classList.add("currency-font-ready");
-        document.documentElement.classList.add("currency-show-text");
-        status.textContent = "✅ عمود \"الرمز\" يتبدّل تلقائيًا بين الشكلين ليؤكد أنه نفس الشيء";
-        (function cycle(){
-          setTimeout(function () {
-            document.documentElement.classList.remove("currency-show-text");
-            setTimeout(function () {
-              document.documentElement.classList.add("currency-show-text");
-              cycle();
-            }, 1000);
-          }, 5000);
-        })();
+        status.textContent = "✅ الرمز ثابت الآن بدون أي تبديل تلقائي";
       } else {
         status.textContent = "⚠️ لم يتم العثور على الخط";
       }
