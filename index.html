@@ -2,21 +2,75 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8" />
-<title>معاينة رمز العملة</title>
-<link rel="stylesheet" href="demo-style.css">
+<title>معاينة احترافية لعرض العملة</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  body{background:#f3f1ea;padding:32px 16px;}
+  .showcase{max-width:520px;margin:0 auto;}
+  .section-title{font-family:'Cairo',sans-serif;font-weight:800;font-size:15px;margin:34px 0 12px;color:#12141C;}
+  .row-example{
+    display:flex;align-items:center;justify-content:space-between;background:#fff;
+    border:1px solid #E4E1D8;border-radius:12px;padding:14px 16px;margin-bottom:10px;
+    font-family:'Cairo',sans-serif;
+  }
+  .row-example .label{color:#8A8578;font-size:13px;}
+  .row-example .value{font-weight:700;font-size:16px;}
+  .badges-strip{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:10px;}
+  .status{font-family:'Cairo',sans-serif;text-align:center;margin-top:24px;font-size:13px;color:#8A8578;}
+</style>
 </head>
 <body>
 
-  <h2>معاينة الخط</h2>
+<div class="showcase">
+  <h2 style="font-family:'Cairo',sans-serif;text-align:center;">معاينة احترافية لعرض العملة بالمتجر</h2>
 
-  <div class="box">السعر: 150 <span class="currency-fallback">د.ع</span><span class="currency-icon" aria-label="دينار">&#xE900;</span></div>
-  <div class="box">السعر: 25000 <span class="currency-fallback">د.ع</span><span class="currency-icon" aria-label="دينار">&#xE900;</span></div>
+  <p class="section-title">أسعار داخل قوائم المنتجات (الاستخدام العادي)</p>
+  <div class="row-example"><span class="label">تيشيرت قطن مطبوع</span><span class="value">150 <span class="currency-fallback">د.ع</span><span class="currency-icon" aria-label="دينار">&#xE900;</span></span></div>
+  <div class="row-example"><span class="label">وشاح تخرج مطرّز</span><span class="value">5,000 <span class="currency-fallback">د.ع</span><span class="currency-icon" aria-label="دينار">&#xE900;</span></span></div>
+  <div class="row-example"><span class="label">سجاد Tufting بتصميم خاص</span><span class="value">25,000 <span class="currency-fallback">د.ع</span><span class="currency-icon" aria-label="دينار">&#xE900;</span></span></div>
+  <div class="row-example"><span class="label">طلبية بالجملة (50 قطعة)</span><span class="value">1,250,000 <span class="currency-fallback">د.ع</span><span class="currency-icon" aria-label="دينار">&#xE900;</span></span></div>
 
-  <p>هذا هو الشكل الفعلي داخل بادج المنتج بالمتجر:</p>
-  <div class="seal-demo">5,000 <span class="currency-fallback">د.ع</span><span class="currency-icon" aria-label="دينار">&#xE900;</span></div>
+  <p class="section-title">البادج الدائري (نفس شكل بطاقة المنتج بالمتجر)</p>
+  <div class="badges-strip">
+    <div class="seal">150 <span class="currency-fallback">د.ع</span><span class="currency-icon" aria-label="دينار">&#xE900;</span></div>
+    <div class="seal">5,000 <span class="currency-fallback">د.ع</span><span class="currency-icon" aria-label="دينار">&#xE900;</span></div>
+    <div class="seal">25,000 <span class="currency-fallback">د.ع</span><span class="currency-icon" aria-label="دينار">&#xE900;</span></div>
+  </div>
 
-  <p id="status">جارِ التحقق من تحميل الخط...</p>
+  <p class="section-title">سطر الإجمالي (نافذة تأكيد الحجز)</p>
+  <div class="row-example" style="background:#12141C;border-color:#12141C;">
+    <span class="label" style="color:#B9B9B9;">الإجمالي</span>
+    <span class="value" style="color:#fff;">45,000 <span class="currency-fallback">د.ع</span><span class="currency-icon" aria-label="دينار">&#xE900;</span></span>
+  </div>
 
-  <script src="demo-script.js"></script>
+  <p class="status" id="status">جارِ التحقق من تحميل الخط...</p>
+</div>
+
+<script>
+  if ("fonts" in document) {
+    document.fonts.load('16px "GoldDinarCurrency"').then(function (loaded) {
+      var status = document.getElementById("status");
+      if (loaded && loaded.length > 0) {
+        document.documentElement.classList.add("currency-font-ready");
+        document.documentElement.classList.add("currency-show-text");
+        status.textContent = "✅ هذا هو المظهر الاحترافي الفعلي — د.ع لمدة 5 ثوانٍ ثم الرمز لثانية، ويتكرر";
+        (function cycle(){
+          setTimeout(function () {
+            document.documentElement.classList.remove("currency-show-text");
+            setTimeout(function () {
+              document.documentElement.classList.add("currency-show-text");
+              cycle();
+            }, 1000);
+          }, 5000);
+        })();
+      } else {
+        status.textContent = "⚠️ لم يتم العثور على الخط — يظهر النص الاحتياطي د.ع";
+      }
+    }).catch(function () {
+      document.getElementById("status").textContent = "❌ فشل تحميل الخط — يظهر النص الاحتياطي د.ع";
+    });
+  }
+</script>
 </body>
 </html>
