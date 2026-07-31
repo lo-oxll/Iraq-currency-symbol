@@ -13,7 +13,7 @@ body{font-family:sans-serif;background:#f7f4ee;padding:40px;text-align:center;}
   font-family:"GoldDinarCurrency";
   font-size:1.45em;
   vertical-align:-0.1em;
-  -webkit-text-stroke:0.35px currentColor;
+  -webkit-text-stroke:0.15px currentColor;
 }
 html.currency-font-ready .currency-fallback{display:none;}
 html.currency-font-ready .currency-icon{display:inline;}
@@ -29,5 +29,5 @@ html.currency-font-ready.currency-show-text .currency-icon{display:none;}
 .seal-demo .currency-icon{
   font-size:1.65em;
   vertical-align:-0.1em;
-  -webkit-text-stroke:0.55px #FFFFFF;
+  -webkit-text-stroke:0.3px #FFFFFF;
 }
