@@ -11,9 +11,9 @@ body{font-family:sans-serif;background:#f7f4ee;padding:40px;text-align:center;}
 .currency-icon{
   display:none;
   font-family:"GoldDinarCurrency";
-  font-size:1.3em;
-  vertical-align:-0.09em;
-  -webkit-text-stroke:0.3px currentColor;
+  font-size:1.45em;
+  vertical-align:-0.1em;
+  -webkit-text-stroke:0.35px currentColor;
 }
 html.currency-font-ready .currency-fallback{display:none;}
 html.currency-font-ready .currency-icon{display:inline;}
@@ -21,13 +21,13 @@ html.currency-font-ready.currency-show-text .currency-fallback{display:inline;}
 html.currency-font-ready.currency-show-text .currency-icon{display:none;}
 
 .seal-demo{
-  width:66px;height:66px;border-radius:50%;background:#12141C;color:#FFFFFF;
+  width:72px;height:72px;border-radius:50%;background:#12141C;color:#FFFFFF;
   display:flex;align-items:center;justify-content:center;flex-shrink:0;
-  border:2px dashed #B9B9B9;font-size:13px;font-weight:700;text-align:center;
+  border:2px dashed #B9B9B9;font-size:14px;font-weight:700;text-align:center;
   padding:2px;line-height:1.2;margin:20px auto;
 }
 .seal-demo .currency-icon{
-  font-size:1.4em;
-  vertical-align:-0.08em;
-  -webkit-text-stroke:0.4px #FFFFFF;
+  font-size:1.65em;
+  vertical-align:-0.1em;
+  -webkit-text-stroke:0.55px #FFFFFF;
 }
