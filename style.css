@@ -12,22 +12,17 @@
   --silver:#C7CCD3; --silver-dark:#9AA1AB;
   --btn-border:#FFFFFF; /* إطار أبيض بارز على الأزرار في الوضع الليلي */
 }
-@font-face{
-  font-family:"GoldDinarCurrency";
-  src:url("data:font/woff;base64,d09GRgABAAAAAANgAAoAAAAABDwAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABPUy8yAAABZAAAAC4AAABgRQE8rmNtYXAAAAGgAAAAMQAAADzR8RedZ2x5ZgAAAdwAAACiAAAAogVt5kNoZWFkAAAA9AAAADYAAAA2Li8MKmhoZWEAAAEsAAAAHwAAACQFQwG1aG10eAAAAZQAAAAMAAAADAY1AC1sb2NhAAAB1AAAAAgAAAAIAA0AXm1heHAAAAFMAAAAGAAAACAACAAwbmFtZQAAAoAAAADQAAABmFt3IZZwb3N0AAADUAAAABAAAAAoAAgAvQABAAAAAQAAQmHBlV8PPPUAAQPoAAAAAOaTZEAAAAAA5pNkTgAAAAAB9AK8AAAAAwACAAAAAAAAeJxjYGRgYFb4b8HAwOTLwMCgw6TIABRBAcwANsUB/gB4nGNgZGBgYGbQY2BhAAEmBjQAAAWMADl4nGNgZhJinMDAysDCQBgwCiBx7IEASCm8ZGBW+G/BACQZTqCpV2BgAAC7AwUtAAAB9AAAAfQAAAJNAC14nGNgYGBiYGBgBmIRIMkIplkYNIA0G5BmBMoqvGT4/x/IB9P/H4ozgVUBAQCXCAhzAAAAAAAADQANAFEAAQAyAAABwgK8AAMAADMhESEyAZD+cAK8AAAEAAAAAAH0ArwAGgAgACcALQAAExUjFRcVIxUXFT8ILwcDNRcPAgM3FxcHByMRHwMjQUFBQUFnQEU4MiodEgQKFyAsOD08LhLFJy83OOUGBQIJ5Tg3LyfFArzUQQGQQQHUAQkZISw5O0dDRT84MiweEAb9smcBKiEUATEBGSUoKwE4BhUgKwAAAHicjYtBaoNQFEWP0SSUlEAmpZCJdK4oxW4ggQw6c+BcEpEP8oUvStxAl9DVdEldRJ/mTUoG7YP//rnv3gs88onHNB67eU+zYC3qxj57npUDoVflJRvelVdzxscLHuTyQqG8YMtV2eeND+WAhC/lJU98K6+mzKltLkdjS3fonavsecyrum9Kd3ePcjNUrouG9M4Kb1Yhz7Q2zOKEEy0NF44YLCWOA71sRyX6zEguVMutmd2/85E0DINoRydqIP1HK/zVKvQ30rPiZcQkPy7SSEt4nGNgYsAPmMF4LwABUQDG") format("woff");
-  font-weight:normal;font-style:normal;font-display:swap;
-}
-.currency-fallback{}
+.currency-fallback{display:none;}
 .currency-icon{
-  display:none;
-  font-family:"GoldDinarCurrency";
-  font-size:1.6em;
-  vertical-align:-0.14em;
-  letter-spacing:0;
-  -webkit-text-stroke:0.045em currentColor;
+  display:inline-block;
+  width:0.72em;height:0.72em;
+  background-color:currentColor;
+  -webkit-mask-image:url("currency-logo-exact.svg");
+  mask-image:url("currency-logo-exact.svg");
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  -webkit-mask-size:contain;mask-size:contain;
+  vertical-align:-0.05em;
 }
-html.currency-font-ready .currency-fallback{display:none;}
-html.currency-font-ready .currency-icon{display:inline;}
 
 *{box-sizing:border-box;}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:'Cairo',sans-serif;-webkit-font-smoothing:antialiased;transition:background .25s ease, color .25s ease;}
@@ -92,9 +87,9 @@ h1.brand{font-size:clamp(26px,7vw,46px);margin:0;line-height:1;color:var(--ink);
   padding:2px;line-height:1.2;
 }
 .seal .currency-icon{
-  font-size:1.9em;
-  vertical-align:-0.15em;
-  -webkit-text-stroke:0.075em #FFFFFF;
+  width:1.1em;height:1.1em;
+  background-color:#FFFFFF;
+  vertical-align:-0.08em;
 }
 .card .info{flex:1;min-width:0;}
 .card h3{margin:0;font-size:17px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}

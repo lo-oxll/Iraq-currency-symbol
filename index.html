@@ -17,8 +17,6 @@
   .form .value{font-weight:800;font-size:20px;color:#12141C;}
   .form .tag{font-size:11px;color:#8A8578;}
   .eq{font-size:18px;color:#C8952E;font-weight:800;}
-
-  .status{text-align:center;margin-top:20px;font-size:13px;color:#8A8578;}
 </style>
 </head>
 <body>
@@ -29,7 +27,7 @@
 
   <div class="group">
     <div class="three">
-      <div class="form"><span class="value">150 <span class="currency-fallback">د.ع</span><span class="currency-icon" aria-label="دينار">&#xE900;</span></span><span class="tag">الرمز</span></div>
+      <div class="form"><span class="value">150 <span class="currency-icon" aria-label="دينار"></span></span><span class="tag">الرمز</span></div>
       <span class="eq">=</span>
       <div class="form"><span class="value">150 د.ع</span><span class="tag">د.ع</span></div>
       <span class="eq">=</span>
@@ -39,7 +37,7 @@
 
   <div class="group">
     <div class="three">
-      <div class="form"><span class="value">5,000 <span class="currency-fallback">د.ع</span><span class="currency-icon" aria-label="دينار">&#xE900;</span></span><span class="tag">الرمز</span></div>
+      <div class="form"><span class="value">5,000 <span class="currency-icon" aria-label="دينار"></span></span><span class="tag">الرمز</span></div>
       <span class="eq">=</span>
       <div class="form"><span class="value">5,000 د.ع</span><span class="tag">د.ع</span></div>
       <span class="eq">=</span>
@@ -49,31 +47,14 @@
 
   <div class="group">
     <div class="three">
-      <div class="form"><span class="value">25,000 <span class="currency-fallback">د.ع</span><span class="currency-icon" aria-label="دينار">&#xE900;</span></span><span class="tag">الرمز</span></div>
+      <div class="form"><span class="value">25,000 <span class="currency-icon" aria-label="دينار"></span></span><span class="tag">الرمز</span></div>
       <span class="eq">=</span>
       <div class="form"><span class="value">25,000 د.ع</span><span class="tag">د.ع</span></div>
       <span class="eq">=</span>
       <div class="form"><span class="value">25,000 IQD</span><span class="tag">IQD</span></div>
     </div>
   </div>
-
-  <p class="status" id="status">جارِ التحقق من تحميل الخط...</p>
 </div>
 
-<script>
-  if ("fonts" in document) {
-    document.fonts.load('16px "GoldDinarCurrency"').then(function (loaded) {
-      var status = document.getElementById("status");
-      if (loaded && loaded.length > 0) {
-        document.documentElement.classList.add("currency-font-ready");
-        status.textContent = "✅ الرمز ثابت الآن بدون أي تبديل تلقائي";
-      } else {
-        status.textContent = "⚠️ لم يتم العثور على الخط";
-      }
-    }).catch(function () {
-      document.getElementById("status").textContent = "❌ فشل تحميل الخط";
-    });
-  }
-</script>
 </body>
 </html>
