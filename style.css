@@ -13,15 +13,17 @@
   --btn-border:#FFFFFF; /* إطار أبيض بارز على الأزرار في الوضع الليلي */
 }
 .currency-fallback{display:none;}
+/* رمز الدينار: ارتفاعه = ارتفاع الأرقام (0.72em) ويجلس على خط الأساس،
+   وعرضه محسوب من نسبة الرمز (71:81) حتى لا يتشوّه */
 .currency-icon{
   display:inline-block;
-  width:0.95em;height:0.95em;
+  height:0.72em;width:0.631em;
   background-color:currentColor;
   -webkit-mask-image:url("currency-logo-exact.svg");
   mask-image:url("currency-logo-exact.svg");
   -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
-  -webkit-mask-size:contain;mask-size:contain;
-  vertical-align:-0.12em;
+  -webkit-mask-size:100% 100%;mask-size:100% 100%;
+  vertical-align:baseline;
 }
 
 *{box-sizing:border-box;}
@@ -87,9 +89,9 @@ h1.brand{font-size:clamp(26px,7vw,46px);margin:0;line-height:1;color:var(--ink);
   padding:2px;line-height:1.2;
 }
 .seal .currency-icon{
-  width:1.1em;height:1.1em;
+  width:0.745em;height:0.85em;
   background-color:#FFFFFF;
-  vertical-align:-0.08em;
+  vertical-align:middle;
 }
 .card .info{flex:1;min-width:0;}
 .card h3{margin:0;font-size:17px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
