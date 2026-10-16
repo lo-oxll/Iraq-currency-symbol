@@ -1,0 +1,13 @@
+{%- comment -%}
+IQD Symbol for Shopify (CC0 symbol, MIT code)
+1) Online Store > Themes > Edit code > Snippets > Add snippet: iqd-symbol > paste this file.
+2) In layout/theme.liquid, before </head>, add: {% render 'iqd-symbol' %}
+3) Settings > Store currency > Change formatting > "HTML with currency" and "HTML without currency":
+   {{amount_no_decimals}} <span class="iqd"></span>
+4) Save.
+{%- endcomment -%}
+<style>
+@font-face{font-family:"IQD Symbol";font-display:swap;unicode-range:U+E900;src:url(data:font/woff2;base64,d09GMgABAAAAAAKQAAoAAAAABOQAAAJGAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAABmAAPAqDTIM+ATYCJAMMCwgABCAFghEHLBscBACeBTkZb2pGIMIlzm31d9jbWsnntdV+ksmcWebELHtunZlV6qUqlO6tddByvJ5ld8Z17Tgd/zxOjm9jaTUUUQjAW7cvKAnGUZhCBqHESaJlYUBla8rd63Hzfzb9G+4GOy66QMez4WyC5+3b86VRGqbZjOqmD5JG3PNTJCDJvLUdPWM2WyvJ6BM9Ilg0JFs4hWDJCCApACvur7S1WH30BXf0bncH7gCAAhhAYAhAUPgDVAqCcn+1hu7B+NhRBDDmmgpQAB+Y6dkKACAAltNLAkyKmVLEiR3bTQbNCYWwG/e2dJ2PEuCjBThoNA2i2ruFvb/wXpdnI1lJV+MHsx3qhDqabYHvzsgXWy/wtKlc8JkYKdOn/LR8riq+2Uvp8N0zXTMPslD5Dd/pOjPbcuVbPmUUkm/xu37bu2B3qa2Ti39QPrG09HTn4f/Xj/w1Jfbm+S2N6h7MbNWr+akFaekZUuq8hdB4aVa5JoS3TsqM9LSC1PzkukiW9T/vPn/5euP+/Y2j/unG5vWN5sbp/qON+/vPb75++Xz3U6+wSAAACIBA3blvnUWi3pCxvwB/fv8rHRIJ9IgXYKiR0Znq6RcBImcQYpmFf4gMS1SZCJF5I22hoDLUyhntwJYJY3YyZcADbsaKP4ZkIwCh4kgmhDaZMjcFMeNpGTPC3SNCw91DLvpRyRzyCjJ/AR0/CZbEpkX8KBAK3EUI1X99CHf5LmZUBTItA1FTkkWgyDewxRSiuwzZOb9CiUk9YjuI8UTJtnlBWcdAMwA=) format("woff2")}
+.iqd{font-family:"IQD Symbol";font-style:normal;font-weight:400}
+.iqd::before{content:"\E900"}
+</style>
