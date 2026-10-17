@@ -3,8 +3,8 @@
    الرمز يأخذ لون النص وحجمه تلقائياً. */
 @font-face{
   font-family:"Iraq Dinar Symbol";
-  src:url("../fonts/IraqDinarSymbol.woff") format("woff"),
-      url("../fonts/IraqDinarSymbol.ttf") format("truetype");
+  src:url("IraqDinarSymbol.woff") format("woff"),
+      url("IraqDinarSymbol.ttf") format("truetype");
   font-weight:normal;font-style:normal;font-display:swap;
 }
 .iqd{font-family:"Iraq Dinar Symbol",sans-serif;font-style:normal;font-weight:normal;}

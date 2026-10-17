@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 // تحميل الخط من موقع الرمز (غيّر الرابط إذا رفعت الخط على موقعك)
 add_action( 'wp_enqueue_scripts', function () {
-	wp_enqueue_style( 'iraq-dinar', 'https://lo-oxll.github.io/Iraq-currency-symbol/css/iraq-dinar.css', array(), '1.0.0' );
+	wp_enqueue_style( 'iraq-dinar', 'https://lo-oxll.github.io/Iraq-currency-symbol/iraq-dinar.css', array(), '1.0.0' );
 } );
 
 // استبدال رمز العملة IQD
