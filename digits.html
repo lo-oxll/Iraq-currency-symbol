@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>الأرقام ذات الزوايا — 0 إلى 9</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#12141C;--gold:#C8952E;--bg:#f3f1ea;--line:#E4E1D8;--muted:#6f6a5d}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Cairo',sans-serif;line-height:1.6;padding:18px 12px 36px}
+.w{max-width:960px;margin:0 auto}
+h1{text-align:center;font-size:clamp(24px,6.5vw,36px);font-weight:800;margin:0}
+.sub{text-align:center;color:var(--muted);font-size:clamp(15px,4vw,18px);margin:2px 0 16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px}
+.live{background:var(--ink);color:#fff;border-radius:16px;padding:14px;text-align:center;margin-bottom:12px}
+.live input{width:100%;max-width:320px;font:800 24px Cairo,sans-serif;text-align:center;border:2px solid var(--gold);border-radius:12px;padding:6px;background:#fff;color:var(--ink);direction:ltr}
+.out{direction:ltr;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.12em;font-size:clamp(54px,17vw,96px);margin-top:10px;min-height:1.1em}
+.out svg{height:1em;width:.6em;stroke:currentColor}
+.out .c{font-weight:800;font-size:.7em;color:#c9c6bd;margin:0 .05em}
+.out svg.sym{width:.82em;margin-inline-start:.2em}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:640px){.grid{grid-template-columns:repeat(5,1fr)}}
+.d{text-align:center}
+.d svg{height:92px;width:56px;stroke:var(--ink)}
+.d b{display:block;font-size:18px;font-weight:800;margin-top:4px}
+.d span{font-size:15px;color:var(--muted);font-weight:600}
+.note{margin-top:12px;font-size:15px;color:var(--muted);text-align:center}
+a{color:var(--ink)}
+</style>
+</head>
+<body><div class="w">
+<h1>الأرقام ذات الزوايا</h1>
+<p class="sub">كل رقم فيه من الزوايا بقدر قيمته</p>
+
+<div class="live">
+  <input id="n" value="25000" inputmode="numeric" maxlength="12" aria-label="اكتب رقماً">
+  <div class="out" id="out"></div>
+</div>
+
+<div class="grid" id="g"></div>
+<p class="note">بنفس سماكة رمز الدينار ليتناسق الرقم مع الرمز. <a href="index.html">العودة للرمز</a></p>
+</div>
+<script>
+// خطوط كل رقم (مسار مركزي، سماكة 9) — viewBox 0 0 60 100
+var P={
+0:'<ellipse cx="30" cy="50" rx="18" ry="38"/>',
+1:'<path d="M14 30L36 12L36 88"/>',
+2:'<path d="M12 12L48 12L12 88L48 88"/>',
+3:'<path d="M12 12L48 12L16 50L48 88L12 88"/>',
+4:'<path d="M36 12L10 62L48 62M36 12L36 88"/>',
+5:'<path d="M48 12L12 12L12 48L48 48L48 88L12 88L12 72"/>',
+6:'<path d="M48 12L12 12L12 88L48 88L48 50L12 50"/>',
+7:'<path d="M10 12L48 12L20 88M12 52L46 52"/>',
+8:'<path d="M12 12L48 12L12 88L48 88Z"/>',
+9:'<path d="M48 50L48 12L12 12L12 50L48 50L48 88L12 88L12 72"/>'};
+var L=['صفر زاوية','زاوية واحدة','زاويتان','ثلاث زوايا','أربع زوايا','خمس زوايا','ست زوايا','سبع زوايا','ثمان زوايا','تسع زوايا'];
+function svg(d){return '<svg viewBox="0 0 60 100" fill="none" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">'+P[d]+'</svg>'}
+document.getElementById('g').innerHTML=[1,2,3,4,5,6,7,8,9,0].map(function(d){
+  return '<div class="card d">'+svg(d)+'<b>'+d+'</b><span>'+L[d]+'</span></div>'}).join('');
+function draw(){
+  var v=document.getElementById('n').value.replace(/[٠-٩]/g,function(c){return c.charCodeAt(0)-1632}).replace(/[^0-9]/g,'');
+  var s=v.split('').reverse().join('').replace(/(\d{3})(?=\d)/g,'$1,').split('').reverse().join('');
+  document.getElementById('out').innerHTML=s.split('').map(function(c){return c===','?'<span class="c">,</span>':svg(c)}).join('')+(v?'<svg class="sym" viewBox="0 0 82 100" fill="none" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(-11.4 -5.9) scale(1.118)" stroke-width="8"><path d="M38 16L38 84Q70 84 78 50Q70 16 38 16"/><path d="M20 16L20 84"/></g></svg>':'');
+}
+document.getElementById('n').addEventListener('input',draw);draw();
+</script>
+</body>
+</html>
