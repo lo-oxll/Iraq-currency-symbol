@@ -5,6 +5,7 @@
 ## الملفات (كلها في مستوى واحد بدون مجلدات)
 - `IraqDinarSymbol.ttf` و `.woff` — الخط، الرمز على الشيفرة U+E900
 - `iraq-dinar-symbol-*.svg` و `.png` — أسود، أبيض، كحلي، ذهبي
+- `IraqDinarDigits-Regular/Bold.ttf` و `.woff` — خط الأرقام المصممة (0-9 و٠-٩) + الرمز
 - `iraq-dinar.css` — ملف CSS الجاهز
 - `iraq-dinar-symbol.php` — إضافة ووكومرس
 - `downloads.html` — صفحة التحميل · `LICENSE` — CC0

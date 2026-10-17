@@ -8,3 +8,9 @@
   font-weight:normal;font-style:normal;font-display:swap;
 }
 .iqd{font-family:"Iraq Dinar Symbol",sans-serif;font-style:normal;font-weight:normal;}
+
+/* خط الأرقام + الرمز: يحوّل الأرقام العادية 0-9 (والعربية ٠-٩) إلى الأرقام ذات الزوايا
+   الاستخدام:  <span class="iqd-digits">25,000 &#xE900;</span> */
+@font-face{font-family:"Iraq Dinar Digits";src:url("IraqDinarDigits-Regular.woff") format("woff"),url("IraqDinarDigits-Regular.ttf") format("truetype");font-weight:400;font-display:swap;}
+@font-face{font-family:"Iraq Dinar Digits";src:url("IraqDinarDigits-Bold.woff") format("woff"),url("IraqDinarDigits-Bold.ttf") format("truetype");font-weight:700 900;font-display:swap;}
+.iqd-digits{font-family:"Iraq Dinar Digits",sans-serif;}
