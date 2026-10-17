@@ -3,82 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>كيبورد الأرقام ورمز الدينار</title>
+<title>كيبورد الكوفي والأرقام</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="iraq-dinar.css">
 <style>
 :root{--ink:#12141C;--gold:#C8952E;--bg:#f3f1ea;--line:#E4E1D8}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:'Cairo',sans-serif;min-height:100vh;display:flex;justify-content:center;padding:12px 10px calc(12px + env(safe-area-inset-bottom))}
-.app{width:100%;max-width:420px}
-h1{font-size:22px;font-weight:800;text-align:center;margin:2px 0 10px}
-.screen{background:var(--ink);color:#fff;border-radius:16px;min-height:112px;display:flex;align-items:center;justify-content:center;padding:10px;direction:ltr;flex-wrap:wrap;gap:.08em;font-size:clamp(38px,11.5vw,52px);overflow:hidden}
-.screen svg{height:.9em;width:.56em;stroke:currentColor}
-.screen svg.sym{width:.72em;margin-right:.18em}
-.screen .c{font-size:.6em;font-weight:800;line-height:1;align-self:flex-end;margin-bottom:.1em}
-.screen .ph{font-size:18px;color:#8e8b82;font-weight:600}
-.pad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px;direction:ltr}
-.k{background:#fff;border:1px solid var(--line);border-radius:14px;height:68px;display:flex;align-items:center;justify-content:center;font:800 20px Cairo,sans-serif;color:var(--ink);cursor:pointer;touch-action:manipulation}
-.k:active{background:#e9e5d8;transform:scale(.97)}
-.k svg{height:40px;width:25px;stroke:var(--ink)}
-.k.sym svg{width:34px}
-.k.g{background:var(--gold);border-color:var(--gold)}
-.k.d{background:var(--ink);color:#fff;border-color:var(--ink)}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
-.row .k{height:54px;font-size:17px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Cairo',sans-serif;min-height:100vh;display:flex;justify-content:center;padding:10px 8px calc(10px + env(safe-area-inset-bottom))}
+.app{width:100%;max-width:440px}
+h1{font-size:20px;font-weight:800;text-align:center;margin:2px 0 8px}
+.k,.screen{font-family:"Iraq Kufic","Iraq Dinar Digits",sans-serif}
+.screen{background:var(--ink);color:#fff;border-radius:16px;min-height:120px;padding:12px 14px;font-size:clamp(44px,13vw,60px);line-height:1.6;direction:rtl;text-align:right;overflow-wrap:anywhere;display:flex;align-items:center}
+.screen .ph{font:600 17px Cairo,sans-serif;color:#8e8b82;width:100%;text-align:center}
+.rows{margin-top:8px;display:flex;flex-direction:column;gap:6px}
+.r{display:grid;gap:5px;direction:rtl;justify-content:center}
+.k{background:#fff;border:1px solid var(--line);border-radius:10px;height:52px;display:flex;align-items:center;justify-content:center;font-size:30px;color:var(--ink);cursor:pointer;touch-action:manipulation;padding:0}
+.k:active{background:#e9e5d8;transform:scale(.96)}
+.k.g{background:var(--gold);border-color:var(--gold)}.k.d{background:var(--ink);color:#fff;border-color:var(--ink)}
+.k.u{font:800 16px Cairo,sans-serif}
+.num .k{height:62px;font-size:38px}
+.act{display:grid;grid-template-columns:1.2fr 1fr .8fr;gap:6px;margin-top:8px}
+.act .k{height:50px;font:800 16px Cairo,sans-serif}
 .hint{font-size:13px;color:#6f6a5d;text-align:center;margin:10px 4px 0}
 a{color:var(--ink)}
 </style>
 </head>
 <body><div class="app">
-<h1>كيبورد الأرقام ورمز الدينار</h1>
+<h1>كيبورد الكوفي والأرقام</h1>
 <div class="screen" id="s"></div>
-<div class="pad" id="p"></div>
-<div class="row">
-  <button class="k g" id="cpy">نسخ كنص</button>
-  <button class="k d" id="png">تحميل صورة PNG</button>
+<div class="rows" id="kb"></div>
+<div class="act">
+  <button class="k g" id="cpy">نسخ النص</button>
+  <button class="k d" id="png">صورة PNG</button>
+  <button class="k u" id="clr">مسح</button>
 </div>
-<p class="hint" id="m">اكتب الرقم ثم انسخه. النص المنسوخ يظهر بالأرقام المصممة حين يكون <a href="IraqDinarSymbol.ttf">الخط</a> مثبّتاً. <a href="index.html">الرئيسية</a></p>
+<p class="hint">النص المنسوخ يظهر بالخط الكوفي حيث يكون <a href="IraqKufic-Regular.ttf">الخط</a> مثبّتاً. <a href="index.html">الرئيسية</a></p>
 </div>
 <script>
-var P={0:'<ellipse cx="30" cy="50" rx="18" ry="38"/>',1:'<path d="M14 30L36 12L36 88"/>',2:'<path d="M12 12L48 12L12 88L48 88"/>',3:'<path d="M12 12L48 12L16 50L48 88L12 88"/>',4:'<path d="M36 12L10 62L36 62M36 12L36 88"/>',5:'<path d="M48 12L12 12L12 48L48 48L48 88L12 88L12 72"/>',6:'<path d="M48 12L12 12L12 88L48 88L48 50L12 50"/>',7:'<path d="M10 12L48 12L20 88M12 52L46 52M8 88L32 88"/>',8:'<path d="M12 12L48 12L12 88L48 88Z"/>',9:'<path d="M48 50L48 12L12 12L12 50L48 50L48 88L12 88L12 64L28 64L28 72"/>'};
-var A=' fill="none" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"';
-var SYM_IN='<g transform="translate(-11.4 -5.9) scale(1.118)" stroke-width="8"><path d="M38 16L38 84Q70 84 78 50Q70 16 38 16"/><path d="M20 16L20 84"/></g>';
-var dg=function(d){return '<svg viewBox="0 0 60 100"'+A+'>'+P[d]+'</svg>'};
-var sy='<svg class="sym" viewBox="0 0 82 100"'+A+'>'+SYM_IN+'</svg>';
-var num='',hasSym=false,MAX=12;
-function fmt(){return num.split('').reverse().join('').replace(/(\d{3})(?=\d)/g,'$1,').split('').reverse().join('')}
-function draw(){
-  var h=fmt().split('').map(function(c){return c===','?'<span class="c">,</span>':dg(c)}).join('');
-  document.getElementById('s').innerHTML=(h||hasSym)?((hasSym?sy:'')+h):'<span class="ph">اضغط على الأرقام</span>';
+var AR=[['ض','ص','ث','ق','ف','غ','ع','ه','خ','ح'],['ج','د','ش','س','ي','ب','ل','ا','ت','ن'],['م','ك','ط','ئ','ء','ؤ','ر','ى','ة','و'],['ز','ظ','ذ','أ','إ','آ','،','؟']];
+var txt='',layer='ar';
+function show(){document.getElementById('s').innerHTML=txt?'':'<span class="ph">اضغط على الحروف</span>';if(txt)document.getElementById('s').textContent=txt}
+function key(label,fn,cls){var b=document.createElement('button');b.className='k '+(cls||'');b.textContent=label;b.onclick=fn;return b}
+function add(c){if(txt.length<80){txt+=c;show()}}
+function del(){txt=Array.from(txt).slice(0,-1).join('');show()}
+function row(items,cols){var r=document.createElement('div');r.className='r';r.style.gridTemplateColumns=cols;items.forEach(function(i){r.appendChild(i)});return r}
+function build(){
+  var kb=document.getElementById('kb');kb.innerHTML='';kb.className='rows'+(layer==='num'?' num':'');
+  if(layer==='ar'){
+    AR.forEach(function(rw){kb.appendChild(row(rw.map(function(c){return key(c,function(){add(c)})}),'repeat(10,minmax(0,1fr))'))});
+    kb.appendChild(row([key('١٢٣',function(){layer='num';build()},'d u'),key('مسافة',function(){add(' ')},'u'),key('⌫',del,'u')],'1fr 3fr 1fr'));
+  }else{
+    var d=['1','2','3','4','5','6','7','8','9','\uE900','0','.'];
+    for(var i=0;i<12;i+=3)kb.appendChild(row(d.slice(i,i+3).map(function(c){var k=key(c,function(){add(c)},c==='\uE900'?'g':'');return k}),'repeat(3,1fr)'));
+    kb.appendChild(row([key('حروف',function(){layer='ar';build()},'d u'),key('،',function(){add('،')}),key('مسافة',function(){add(' ')},'u'),key('⌫',del,'u')],'1.2fr 1fr 1.6fr 1fr'));
+  }
 }
-var keys=[1,2,3,4,5,6,7,8,9,'sym',0,'del'],pad=document.getElementById('p');
-keys.forEach(function(k){
-  var b=document.createElement('button');b.className='k';
-  if(k==='sym'){b.classList.add('sym','g');b.innerHTML='<svg viewBox="0 0 82 100"'+A+' style="stroke:#12141C">'+SYM_IN+'</svg>';b.setAttribute('aria-label','رمز الدينار')}
-  else if(k==='del'){b.textContent='⌫';b.setAttribute('aria-label','حذف')}
-  else b.innerHTML=dg(k);
-  b.onclick=function(){
-    if(k==='sym')hasSym=!hasSym;
-    else if(k==='del'){if(num)num=num.slice(0,-1);else hasSym=false}
-    else if(num.length<MAX&&!(num===''&&k===0))num+=k;
-    draw()};
-  pad.appendChild(b)});
-document.getElementById('cpy').onclick=function(){
-  var t=fmt()+(hasSym?' \uE900':'');var b=this;
-  if(!t.trim())return;
-  navigator.clipboard.writeText(t).then(function(){b.textContent='تم النسخ ✓';setTimeout(function(){b.textContent='نسخ كنص'},1400)})};
+document.getElementById('cpy').onclick=function(){var b=this;if(!txt)return;navigator.clipboard.writeText(txt).then(function(){b.textContent='تم ✓';setTimeout(function(){b.textContent='نسخ النص'},1400)})};
+document.getElementById('clr').onclick=function(){txt='';show()};
 document.getElementById('png').onclick=function(){
-  var s=document.getElementById('s').querySelector('svg');if(!s)return;
-  var H=200,items=[],x=20;
-  var parts=fmt().split('');var out='';
-  function glyph(inner,w,vb){var g='<svg x="'+x+'" y="10" width="'+w+'" height="'+H+'" viewBox="'+vb+'"'+A+' stroke="#12141C">'+inner+'</svg>';x+=w+8;return g}
-  if(hasSym)out+=glyph(SYM_IN,164,'0 0 82 100');
-  parts.forEach(function(c){out+=c===','?(function(){var g='<circle cx="'+(x+8)+'" cy="'+(H-6)+'" r="7" fill="#12141C"/>';x+=24;return g})():glyph(P[c],112,'0 0 60 100')});
-  var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+(x+12)+'" height="'+(H+20)+'">'+out+'</svg>';
-  var img=new Image();img.onload=function(){var c=document.createElement('canvas');c.width=img.width*2;c.height=img.height*2;c.getContext('2d').drawImage(img,0,0,c.width,c.height);c.toBlob(function(bl){var a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download='dinar-number.png';a.click()})};
-  img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg)};
-draw();
+  if(!txt)return;
+  Promise.all([document.fonts.load('100px "Iraq Kufic"'),document.fonts.load('100px "Iraq Dinar Digits"')]).then(function(){
+    var f='130px "Iraq Kufic","Iraq Dinar Digits"',c=document.createElement('canvas'),x=c.getContext('2d');
+    x.font=f;x.direction='rtl';var w=Math.ceil(x.measureText(txt).width)+80;
+    c.width=w;c.height=300;x=c.getContext('2d');x.font=f;x.direction='rtl';x.textAlign='right';x.textBaseline='alphabetic';
+    x.fillStyle='#12141C';x.fillText(txt,w-40,190);
+    c.toBlob(function(bl){var a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download='kufic-text.png';a.click()})})};
+build();show();
 </script>
 </body>
 </html>
