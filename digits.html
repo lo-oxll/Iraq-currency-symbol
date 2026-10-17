@@ -48,12 +48,12 @@ var P={
 1:'<path d="M14 30L36 12L36 88"/>',
 2:'<path d="M12 12L48 12L12 88L48 88"/>',
 3:'<path d="M12 12L48 12L16 50L48 88L12 88"/>',
-4:'<path d="M36 12L10 62L48 62M36 12L36 88"/>',
+4:'<path d="M36 12L10 62L36 62M36 12L36 88"/>',
 5:'<path d="M48 12L12 12L12 48L48 48L48 88L12 88L12 72"/>',
 6:'<path d="M48 12L12 12L12 88L48 88L48 50L12 50"/>',
-7:'<path d="M10 12L48 12L20 88M12 52L46 52"/>',
+7:'<path d="M10 12L48 12L20 88M12 52L46 52M8 88L32 88"/>',
 8:'<path d="M12 12L48 12L12 88L48 88Z"/>',
-9:'<path d="M48 50L48 12L12 12L12 50L48 50L48 88L12 88L12 72"/>'};
+9:'<path d="M48 50L48 12L12 12L12 50L48 50L48 88L12 88L12 64L28 64L28 72"/>'};
 var L=['صفر زاوية','زاوية واحدة','زاويتان','ثلاث زوايا','أربع زوايا','خمس زوايا','ست زوايا','سبع زوايا','ثمان زوايا','تسع زوايا'];
 function svg(d){return '<svg viewBox="0 0 60 100" fill="none" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">'+P[d]+'</svg>'}
 document.getElementById('g').innerHTML=[1,2,3,4,5,6,7,8,9,0].map(function(d){
