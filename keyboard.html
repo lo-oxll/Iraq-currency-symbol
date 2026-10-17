@@ -2,73 +2,143 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>كيبورد الكوفي والأرقام</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>كيبورد الخط الكوفي القديم</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="iraq-dinar.css">
 <style>
-:root{--ink:#12141C;--gold:#C8952E;--bg:#f3f1ea;--line:#E4E1D8}
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:'Cairo',sans-serif;min-height:100vh;display:flex;justify-content:center;padding:10px 8px calc(10px + env(safe-area-inset-bottom))}
-.app{width:100%;max-width:440px}
-h1{font-size:20px;font-weight:800;text-align:center;margin:2px 0 8px}
-.k,.screen{font-family:"Iraq Kufic","Iraq Dinar Digits",sans-serif}
-.screen{background:var(--ink);color:#fff;border-radius:16px;min-height:120px;padding:12px 14px;font-size:clamp(44px,13vw,60px);line-height:1.6;direction:rtl;text-align:right;overflow-wrap:anywhere;display:flex;align-items:center}
-.screen .ph{font:600 17px Cairo,sans-serif;color:#8e8b82;width:100%;text-align:center}
-.rows{margin-top:8px;display:flex;flex-direction:column;gap:6px}
-.r{display:grid;gap:5px;direction:rtl;justify-content:center}
-.k{background:#fff;border:1px solid var(--line);border-radius:10px;height:52px;display:flex;align-items:center;justify-content:center;font-size:30px;color:var(--ink);cursor:pointer;touch-action:manipulation;padding:0}
-.k:active{background:#e9e5d8;transform:scale(.96)}
-.k.g{background:var(--gold);border-color:var(--gold)}.k.d{background:var(--ink);color:#fff;border-color:var(--ink)}
-.k.u{font:800 16px Cairo,sans-serif}
-.num .k{height:62px;font-size:38px}
+:root{--ink:#12141C;--gold:#C8952E;--bg:#f3f1ea;--kb:#d1d3d9;--fn:#abb1bb}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Cairo',sans-serif;display:flex;flex-direction:column;align-items:center;overscroll-behavior:none}
+.top{width:100%;max-width:560px;flex:1;min-height:0;display:flex;flex-direction:column;padding:10px 10px 8px}
+h1{font-size:18px;font-weight:800;text-align:center;margin:0 0 8px}
+#s{flex:1;min-height:90px;width:100%;resize:none;border:0;outline:0;background:var(--ink);color:#fff;border-radius:16px;padding:10px 14px;font:400 clamp(40px,11vw,54px)/1.6 "Iraq Kufic","Iraq Dinar Digits",sans-serif;direction:rtl;text-align:right;caret-color:var(--gold)}
+#s::placeholder{font:600 16px Cairo,sans-serif;color:#8e8b82}
 .act{display:grid;grid-template-columns:1.2fr 1fr .8fr;gap:6px;margin-top:8px}
-.act .k{height:50px;font:800 16px Cairo,sans-serif}
-.hint{font-size:13px;color:#6f6a5d;text-align:center;margin:10px 4px 0}
-a{color:var(--ink)}
+.act button{font:800 15px Cairo,sans-serif;height:42px;border-radius:12px;border:1px solid #E4E1D8;background:#fff;color:var(--ink);cursor:pointer}
+.act .g{background:var(--gold);border-color:var(--gold)}.act .d{background:var(--ink);color:#fff;border-color:var(--ink)}
+.hint{font-size:12px;color:#6f6a5d;text-align:center;margin:6px 0 0}.hint a{color:var(--ink)}
+/* ===== لوحة المفاتيح (نمط iOS) ===== */
+#kb{width:100%;max-width:560px;background:var(--kb);padding:8px 3px calc(8px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:11px;direction:ltr;user-select:none;-webkit-user-select:none;touch-action:none;border-radius:12px 12px 0 0}
+.r{display:flex;gap:5px;justify-content:center}
+.k{--w:calc((100% - 50px)/11);flex:0 0 var(--w);height:48px;background:#fff;border:0;border-radius:6px;box-shadow:0 1px 0 #8b8d92;display:flex;align-items:center;justify-content:center;font:400 38px/1 "Iraq Kufic","Iraq Dinar Digits",sans-serif;color:var(--ink);padding:0;cursor:pointer;touch-action:none}
+.k.down{background:#e4e6ea}
+.k.fn{background:var(--fn);font:600 17px Cairo,sans-serif}
+.k.fn.down{background:#fff}
+.k.sym{font-size:32px}.k.fn.sym{font-family:"Iraq Dinar Digits",sans-serif;font-size:30px;font-weight:400}
+.k.sp{flex:1 1 0;font:600 17px Cairo,sans-serif;background:#fff}
+.k.wide{flex:0 0 calc(var(--w)*1.5)}.k.ret{flex:0 0 calc(var(--w)*2.6)}.k.gap{flex:0 0 calc(var(--w)*.45);background:none;box-shadow:none;pointer-events:none}
+.k.n{font-size:34px}
+#pop{position:fixed;z-index:9;display:none;background:#fff;border-radius:10px;padding:4px;box-shadow:0 2px 14px rgba(0,0,0,.35);direction:ltr;gap:2px}
+#pop .chip{min-width:42px;height:56px;display:flex;align-items:center;justify-content:center;border-radius:7px;font:400 40px/1 "Iraq Kufic","Iraq Dinar Digits",Cairo,sans-serif;color:var(--ink)}
+#pop .chip.on{background:var(--gold);color:#fff}
+#bub{position:fixed;z-index:8;display:none;background:#fff;border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,.3);width:56px;height:66px;align-items:center;justify-content:center;font:400 46px/1 "Iraq Kufic","Iraq Dinar Digits",sans-serif;color:var(--ink)}
 </style>
 </head>
-<body><div class="app">
-<h1>كيبورد الكوفي والأرقام</h1>
-<div class="screen" id="s"></div>
-<div class="rows" id="kb"></div>
-<div class="act">
-  <button class="k g" id="cpy">نسخ النص</button>
-  <button class="k d" id="png">صورة PNG</button>
-  <button class="k u" id="clr">مسح</button>
+<body>
+<div class="top">
+  <h1>كيبورد الخط الكوفي القديم</h1>
+  <textarea id="s" placeholder="اكتب هنا — بأزرار الموقع أو بكيبورد جهازك" inputmode="none" autocomplete="off" spellcheck="false"></textarea>
+  <div class="act"><button class="g" id="cpy">نسخ النص</button><button class="d" id="png">صورة PNG</button><button id="clr">مسح</button></div>
+  <p class="hint">اضغط مطوّلاً على الألف أو الياء أو الواو أو الهاء لتظهر صيغها · <a href="#" id="nat">كيبورد الجهاز</a> · <a href="index.html">الرئيسية</a></p>
 </div>
-<p class="hint">النص المنسوخ يظهر بالخط الكوفي حيث يكون <a href="IraqKufic-Regular.ttf">الخط</a> مثبّتاً. <a href="index.html">الرئيسية</a></p>
-</div>
+<div id="kb"></div>
+<div id="pop"></div><div id="bub"></div>
 <script>
-var AR=[['ض','ص','ث','ق','ف','غ','ع','ه','خ','ح'],['ج','د','ش','س','ي','ب','ل','ا','ت','ن'],['م','ك','ط','ئ','ء','ؤ','ر','ى','ة','و'],['ز','ظ','ذ','أ','إ','آ','،','؟']];
-var txt='',layer='ar';
-function show(){document.getElementById('s').innerHTML=txt?'':'<span class="ph">اضغط على الحروف</span>';if(txt)document.getElementById('s').textContent=txt}
-function key(label,fn,cls){var b=document.createElement('button');b.className='k '+(cls||'');b.textContent=label;b.onclick=fn;return b}
-function add(c){if(txt.length<80){txt+=c;show()}}
-function del(){txt=Array.from(txt).slice(0,-1).join('');show()}
-function row(items,cols){var r=document.createElement('div');r.className='r';r.style.gridTemplateColumns=cols;items.forEach(function(i){r.appendChild(i)});return r}
+var ta=document.getElementById('s'),kb=document.getElementById('kb'),pop=document.getElementById('pop'),bub=document.getElementById('bub'),layer='ar';
+var VAR={'ا':'أ|إ|آ','ي':'ئ|ى','ى':'ي|ئ','و':'ؤ','ة':'ه','ه':'ة','ء':'ؤ|ئ'};
+var HAR='َ|ُ|ِ|ّ|ْ|ً|ٌ|ٍ';
+var LAY={
+ ar:[['ض','ص','ث','ق','ف','غ','ع','ه','خ','ح','ج'],['ش','س','ي','ب','ل','ا','ت','ن','م','ك','ة'],['ء','ظ','ط','ذ','د','ز','ر','و','ى','#gap','#del']],
+ num:[['1','2','3','4','5','6','7','8','9','0'],['-','/',':','؛','(',')','\uE900','&','@','"'],['.','،','؟','!',"'",'#gap','#del']]};
+function ins(t){var a=ta.selectionStart,b=ta.selectionEnd;ta.setRangeText(t,a,b,'end');ta.focus()}
+function del(){var a=ta.selectionStart,b=ta.selectionEnd;if(a!==b)ta.setRangeText('',a,b,'end');else if(a>0)ta.setRangeText('',a-1,a,'end');ta.focus()}
+function mk(cls,txt,d){var b=document.createElement('button');b.className='k '+cls;b.textContent=txt;for(var k in d)b.dataset[k]=d[k];return b}
 function build(){
-  var kb=document.getElementById('kb');kb.innerHTML='';kb.className='rows'+(layer==='num'?' num':'');
+  kb.innerHTML='';
+  LAY[layer].forEach(function(rw){
+    var r=document.createElement('div');r.className='r';
+    rw.forEach(function(c){
+      if(c==='#gap')r.appendChild(mk('gap','',{}));
+      else if(c==='#del')r.appendChild(mk('fn wide','⌫',{act:'del'}));
+      else{var d={ch:c};if(VAR[c])d.v=VAR[c];r.appendChild(mk(layer==='num'?'n':'',c,d))}
+    });kb.appendChild(r)});
+  var b=document.createElement('div');b.className='r';
   if(layer==='ar'){
-    AR.forEach(function(rw){kb.appendChild(row(rw.map(function(c){return key(c,function(){add(c)})}),'repeat(10,minmax(0,1fr))'))});
-    kb.appendChild(row([key('١٢٣',function(){layer='num';build()},'d u'),key('مسافة',function(){add(' ')},'u'),key('⌫',del,'u')],'1fr 3fr 1fr'));
+    b.appendChild(mk('fn wide','123',{act:'num'}));
+    b.appendChild(mk('fn wide sym','\uE900',{ch:'\uE900'}));
+    b.appendChild(mk('sp','مسافة',{ch:' '}));
+    b.appendChild(mk('fn wide','◌ً',{now:'1',v:HAR}));
+    b.appendChild(mk('fn ret','↵',{ch:'\n'}));
   }else{
-    var d=['1','2','3','4','5','6','7','8','9','\uE900','0','.'];
-    for(var i=0;i<12;i+=3)kb.appendChild(row(d.slice(i,i+3).map(function(c){var k=key(c,function(){add(c)},c==='\uE900'?'g':'');return k}),'repeat(3,1fr)'));
-    kb.appendChild(row([key('حروف',function(){layer='ar';build()},'d u'),key('،',function(){add('،')}),key('مسافة',function(){add(' ')},'u'),key('⌫',del,'u')],'1.2fr 1fr 1.6fr 1fr'));
+    b.appendChild(mk('fn wide','ابج',{act:'ar'}));
+    b.appendChild(mk('fn wide','،',{ch:'،'}));
+    b.appendChild(mk('sp','مسافة',{ch:' '}));
+    b.appendChild(mk('fn ret','↵',{ch:'\n'}));
   }
+  kb.appendChild(b);
 }
-document.getElementById('cpy').onclick=function(){var b=this;if(!txt)return;navigator.clipboard.writeText(txt).then(function(){b.textContent='تم ✓';setTimeout(function(){b.textContent='نسخ النص'},1400)})};
-document.getElementById('clr').onclick=function(){txt='';show()};
+// ===== الضغط المطوّل والقوائم =====
+var timer=null,rep=null,curK=null,popOpen=false,sticky=false;
+function rectOf(el){return el.getBoundingClientRect()}
+function showBub(k){var r=rectOf(k);bub.textContent=k.textContent;bub.style.display='flex';
+  bub.style.left=Math.max(2,Math.min(innerWidth-58,r.left+r.width/2-28))+'px';bub.style.top=(r.top-70)+'px'}
+function hideBub(){bub.style.display='none'}
+function openPop(k,items){
+  hideBub();pop.innerHTML='';
+  items.forEach(function(it){var c=document.createElement('div');c.className='chip';c.dataset.ins=it;c.textContent=(k.dataset.now?'◌':'')+it;pop.appendChild(c)});
+  pop.style.display='flex';var r=rectOf(k),w=items.length*44+8;
+  pop.style.left=Math.max(4,Math.min(innerWidth-w-4,r.left+r.width/2-w/2))+'px';pop.style.top=(r.top-68)+'px';popOpen=true;
+}
+function closePop(){pop.style.display='none';popOpen=false;sticky=false}
+function chipAt(x,y){var e=document.elementFromPoint(x,y);return e&&e.closest&&e.closest('.chip')}
+function hover(x,y){var c=chipAt(x,y);[].forEach.call(pop.children,function(n){n.classList.toggle('on',n===c)});return c}
+function fire(k){
+  var a=k.dataset.act;
+  if(a==='del')del();else if(a==='num'){layer='num';build()}else if(a==='ar'){layer='ar';build()}
+  else if(k.dataset.ch!==undefined)ins(k.dataset.ch)}
+kb.addEventListener('pointerdown',function(e){
+  var k=e.target.closest('.k');if(!k||k.classList.contains('gap'))return;
+  e.preventDefault();curK=k;k.classList.add('down');
+  if(k.dataset.ch&&!k.classList.contains('fn')&&k.dataset.ch.trim())showBub(k);
+  if(k.dataset.act==='del'){del();timer=setTimeout(function(){rep=setInterval(del,70)},420)}
+  else if(k.dataset.v){
+    if(k.dataset.now){openPop(k,k.dataset.v.split('|'));sticky=true}
+    else timer=setTimeout(function(){openPop(k,k.dataset.v.split('|'))},320)}
+});
+document.addEventListener('pointerdown',function(e){
+  var c=e.target.closest&&e.target.closest('.chip');
+  if(c&&popOpen){e.preventDefault();ins(c.dataset.ins);closePop();return}
+  if(popOpen&&!(e.target.closest&&e.target.closest('#kb')))closePop();
+},true);
+document.addEventListener('pointermove',function(e){if(popOpen)hover(e.clientX,e.clientY)});
+function up(e){
+  clearTimeout(timer);clearInterval(rep);hideBub();
+  var k=curK;curK=null;if(!k)return;k.classList.remove('down');
+  if(popOpen){var c=hover(e.clientX,e.clientY);if(c){ins(c.dataset.ins);closePop()}else if(!sticky)closePop();return}
+  if(k.dataset.act==='del')return;
+  fire(k)}
+document.addEventListener('pointerup',up);
+document.addEventListener('pointercancel',function(){clearTimeout(timer);clearInterval(rep);hideBub();if(curK)curK.classList.remove('down');curK=null;if(!sticky)closePop()});
+// ===== الكتابة من كيبورد الكمبيوتر (مطابقة المواضع) =====
+var MAP={q:'ض',w:'ص',e:'ث',r:'ق',t:'ف',y:'غ',u:'ع',i:'ه',o:'خ',p:'ح','[':'ج',']':'د',a:'ش',s:'س',d:'ي',f:'ب',g:'ل',h:'ا',j:'ت',k:'ن',l:'م',';':'ك',"'":'ط','`':'ذ',z:'ئ',x:'ء',c:'ؤ',v:'ر',b:'لا',n:'ى',m:'ة',',':'و','.':'ز','/':'ظ'};
+var SH={h:'أ',y:'إ',n:'آ'};
+ta.addEventListener('keydown',function(e){
+  if(e.ctrlKey||e.metaKey||e.altKey||e.key.length!==1)return;
+  var k=e.key.toLowerCase(),m=e.shiftKey&&SH[k]?SH[k]:MAP[k];if(m){e.preventDefault();ins(m)}});
+document.getElementById('nat').onclick=function(e){e.preventDefault();ta.setAttribute('inputmode','text');ta.blur();ta.focus();this.textContent='كيبورد الجهاز مفعّل'};
+document.getElementById('cpy').onclick=function(){var b=this,t=ta.value;if(!t)return;navigator.clipboard.writeText(t).then(function(){b.textContent='تم ✓';setTimeout(function(){b.textContent='نسخ النص'},1400)})};
+document.getElementById('clr').onclick=function(){ta.value='';ta.focus()};
 document.getElementById('png').onclick=function(){
-  if(!txt)return;
+  var t=ta.value;if(!t)return;
   Promise.all([document.fonts.load('100px "Iraq Kufic"'),document.fonts.load('100px "Iraq Dinar Digits"')]).then(function(){
-    var f='130px "Iraq Kufic","Iraq Dinar Digits"',c=document.createElement('canvas'),x=c.getContext('2d');
-    x.font=f;x.direction='rtl';var w=Math.ceil(x.measureText(txt).width)+80;
-    c.width=w;c.height=300;x=c.getContext('2d');x.font=f;x.direction='rtl';x.textAlign='right';x.textBaseline='alphabetic';
-    x.fillStyle='#12141C';x.fillText(txt,w-40,190);
+    var f='130px "Iraq Kufic","Iraq Dinar Digits"',L=t.split('\n'),c=document.createElement('canvas'),x=c.getContext('2d');
+    x.font=f;x.direction='rtl';var w=Math.ceil(Math.max.apply(null,L.map(function(l){return x.measureText(l).width})))+80;
+    c.width=w;c.height=60+L.length*220;x=c.getContext('2d');x.font=f;x.direction='rtl';x.textAlign='right';
+    x.fillStyle='#12141C';L.forEach(function(l,i){x.fillText(l,w-40,180+i*220)});
     c.toBlob(function(bl){var a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download='kufic-text.png';a.click()})})};
-build();show();
+build();
 </script>
 </body>
 </html>
