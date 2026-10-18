@@ -16,5 +16,5 @@
 .iqd-digits{font-family:"Iraq Dinar Digits",sans-serif;}
 
 /* خط الحروف العربية بطابع الكوفي القديم — الاستخدام: <p class="iqd-kufic">بسم الله</p> */
-@font-face{font-family:"Iraq Kufic";src:url("IraqKufic-Regular.woff?v=3") format("woff"),url("IraqKufic-Regular.ttf?v=3") format("truetype");font-weight:400;font-display:swap;}
+@font-face{font-family:"Iraq Kufic";src:url("IraqKufic-Regular.woff?v=4") format("woff"),url("IraqKufic-Regular.ttf?v=4") format("truetype");font-weight:400;font-display:swap;}
 .iqd-kufic{font-family:"Iraq Kufic","Iraq Dinar Digits",sans-serif;}
