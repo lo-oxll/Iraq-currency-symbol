@@ -10,13 +10,13 @@
 :root{--ink:#12141C;--gold:#C8952E;--bg:#f3f1ea;--kb:#d1d3d9;--fn:#abb1bb}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:'Cairo',sans-serif;display:flex;flex-direction:column;align-items:center;overscroll-behavior:none}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Iraq Digits','Cairo',sans-serif;display:flex;flex-direction:column;align-items:center;overscroll-behavior:none}
 .top{width:100%;max-width:560px;flex:1;min-height:0;display:flex;flex-direction:column;padding:10px 10px 8px}
 h1{font-size:18px;font-weight:800;text-align:center;margin:0 0 8px}
 #s{flex:1;min-height:90px;width:100%;resize:none;border:0;outline:0;background:var(--ink);color:#fff;border-radius:16px;padding:10px 14px;font:400 clamp(40px,11vw,54px)/1.6 "Iraq Kufic","Iraq Dinar Digits",sans-serif;direction:rtl;text-align:right;caret-color:var(--gold)}
-#s::placeholder{font:600 16px Cairo,sans-serif;color:#8e8b82}
+#s::placeholder{font:600 16px 'Iraq Digits',Cairo,sans-serif;color:#8e8b82}
 .act{display:grid;grid-template-columns:1.2fr 1fr .8fr;gap:6px;margin-top:8px}
-.act button{font:800 15px Cairo,sans-serif;height:42px;border-radius:12px;border:1px solid #E4E1D8;background:#fff;color:var(--ink);cursor:pointer}
+.act button{font:800 15px 'Iraq Digits',Cairo,sans-serif;height:42px;border-radius:12px;border:1px solid #E4E1D8;background:#fff;color:var(--ink);cursor:pointer}
 .act .g{background:var(--gold);border-color:var(--gold)}.act .d{background:var(--ink);color:#fff;border-color:var(--ink)}
 .hint{font-size:12px;color:#6f6a5d;text-align:center;margin:6px 0 0}.hint a{color:var(--ink)}
 /* ===== لوحة المفاتيح (نمط iOS) ===== */
@@ -24,10 +24,10 @@ h1{font-size:18px;font-weight:800;text-align:center;margin:0 0 8px}
 .r{display:flex;gap:5px;justify-content:center}
 .k{--w:calc((100% - 50px)/11);flex:0 0 var(--w);height:48px;background:#fff;border:0;border-radius:6px;box-shadow:0 1px 0 #8b8d92;display:flex;align-items:center;justify-content:center;font:400 38px/1 "Iraq Kufic","Iraq Dinar Digits",sans-serif;color:var(--ink);padding:0;cursor:pointer;touch-action:none}
 .k.down{background:#e4e6ea}
-.k.fn{background:var(--fn);font:600 17px Cairo,sans-serif}
+.k.fn{background:var(--fn);font:600 17px 'Iraq Digits',Cairo,sans-serif}
 .k.fn.down{background:#fff}
 .k.sym{font-size:32px}.k.fn.sym{font-family:"Iraq Dinar Digits",sans-serif;font-size:30px;font-weight:400}
-.k.sp{flex:1 1 0;font:600 17px Cairo,sans-serif;background:#fff}
+.k.sp{flex:1 1 0;font:600 17px 'Iraq Digits',Cairo,sans-serif;background:#fff}
 .k.wide{flex:0 0 calc(var(--w)*1.5)}.k.ret{flex:0 0 calc(var(--w)*2.6)}.k.gap{flex:0 0 calc(var(--w)*.45);background:none;box-shadow:none;pointer-events:none}
 .k.n{font-size:34px}
 #pop{position:fixed;z-index:9;display:none;background:#fff;border-radius:10px;padding:4px;box-shadow:0 2px 14px rgba(0,0,0,.35);direction:ltr;gap:2px}

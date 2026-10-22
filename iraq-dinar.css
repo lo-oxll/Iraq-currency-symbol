@@ -18,3 +18,7 @@
 /* خط الحروف العربية بطابع الكوفي القديم — الاستخدام: <p class="iqd-kufic">بسم الله</p> */
 @font-face{font-family:"Iraq Kufic";src:url("IraqKufic-Regular.woff?v=4") format("woff"),url("IraqKufic-Regular.ttf?v=4") format("truetype");font-weight:400;font-display:swap;}
 .iqd-kufic{font-family:"Iraq Kufic","Iraq Dinar Digits",sans-serif;}
+
+/* كل الأرقام في الموقع بالزوايا: هذا الخط يغطي الأرقام فقط (0-9 و٠-٩ و۰-۹) والحروف تبقى بخطها */
+@font-face{font-family:"Iraq Digits";src:url("IraqDinarDigits-Regular.woff") format("woff"),url("IraqDinarDigits-Regular.ttf") format("truetype");font-weight:100 600;font-display:swap;unicode-range:U+0030-0039,U+0660-0669,U+06F0-06F9;}
+@font-face{font-family:"Iraq Digits";src:url("IraqDinarDigits-Bold.woff") format("woff"),url("IraqDinarDigits-Bold.ttf") format("truetype");font-weight:700 900;font-display:swap;unicode-range:U+0030-0039,U+0660-0669,U+06F0-06F9;}
